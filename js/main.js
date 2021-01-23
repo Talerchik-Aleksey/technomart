@@ -1,4 +1,4 @@
-﻿"use strict";
+﻿"use strict"; // strict mode
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -15,7 +15,7 @@ function conditionCheaker(num) {
 }
 
 function product_cards_creator() {
-  let img_name = [
+  const img_name = [
     "bosch-2000",
     "bosch-3000",
     "bosch-6000",
@@ -23,9 +23,9 @@ function product_cards_creator() {
     "makita-td-110",
   ];
 
-  let brend = ["BOSCH", "Makita", "Vagner", "Mega", "Proline"];
+  const brend = ["BOSCH", "Makita", "Vagner", "Mega", "Proline"];
 
-  let title = [
+  const title = [
     "Перфоратор BOSCH BFG 2000",
     "Перфоратор BOSCH BFG 3000",
     "Перфоратор BOSCH BFG 6000",
@@ -33,9 +33,9 @@ function product_cards_creator() {
     "Шуруповерт Makita TD-110",
   ];
 
-  let flag = ["new", "promo", "none"];
+  const flag = ["new", "promo", "none"];
 
-  let category = ["Перфораторы", "Шуруповерты", "Ключи", "Отвертки"];
+  const category = ["Перфораторы", "Шуруповерты", "Ключи", "Отвертки"];
 
   let i = 0;
   let product_cards_info = {};
