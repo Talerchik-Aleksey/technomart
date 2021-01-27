@@ -1,21 +1,15 @@
 ﻿"use strict"; // strict mode
 
+const PRODUCT_CARDS_COUNT = 18; // number of cards with product information
+
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; // min max include
 }
 
-/* function roundTo500(num) {
-  return Math.floor(num / 500) * 500;
-} */
-
-function conditionCheaker(num) {
-  return num == 1 ? true : false; // return true or false
-}
-
-function product_cards_creator() {
-  const img_name = [
+function productСardsСreator() {
+  const imgNames = [
     "bosch-2000",
     "bosch-3000",
     "bosch-6000",
@@ -23,9 +17,9 @@ function product_cards_creator() {
     "makita-td-110",
   ];
 
-  const brend = ["BOSCH", "Makita", "Vagner", "Mega", "Proline"];
+  const brends = ["BOSCH", "Makita", "Vagner", "Mega", "Proline"];
 
-  const title = [
+  const titles = [
     "Перфоратор BOSCH BFG 2000",
     "Перфоратор BOSCH BFG 3000",
     "Перфоратор BOSCH BFG 6000",
@@ -33,31 +27,32 @@ function product_cards_creator() {
     "Шуруповерт Makita TD-110",
   ];
 
-  const flag = ["new", "promo", "none"];
+  const flags = ["new", "promo", "none"];
 
-  const category = ["Перфораторы", "Шуруповерты", "Ключи", "Отвертки"];
+  const categories = ["Перфораторы", "Шуруповерты", "Ключи", "Отвертки"];
 
-  let i = 0;
-  let product_cards_info = {};
+  let productCardsInfo = {};
 
-  while (i < 18) {
+  for (let index = 0; index < PRODUCT_CARDS_COUNT; index++) {
     let price = getRandomIntInclusive(5000, 20000);
-    product_cards_info = {
+    productCardsInfo = {
       url:
-        "../img/catalog" +
-        img_name[Math.floor(Math.random() * img_name.length)] +
+        "../img/catalog/" +
+        imgNames[getRandomIntInclusive(0, imgNames.length - 1)] +
         ".img",
-      brand: brend[Math.floor(Math.random() * brend.length)],
-      title: title[Math.floor(Math.random() * title.length)],
+      brend: brends[getRandomIntInclusive(0, brends.length - 1)],
+      title: titles[getRandomIntInclusive(0, titles.length - 1)],
       price: price,
-      category: category[Math.floor(Math.random() * category.length)],
+      category: categories[getRandomIntInclusive(0, categories.length - 1)],
       discount: Math.floor((price * (1 + 0.15)) / 500) * 500,
-      flag: flag[Math.floor(Math.random() * flag.length)],
-      isElectric: conditionCheaker(getRandomIntInclusive(0, 1)),
+      flag: flags[getRandomIntInclusive(0, flags.length - 1)],
+      isElectric: getRandomIntInclusive(0, 1) == 1,
     };
-    i++;
-    console.log(product_cards_info);
+    console.log(productCardsInfo);
+    productCardsRepository.push(productCardsInfo);
   }
 }
 
-product_cards_creator();
+let productCardsRepository = [];
+
+productСardsСreator(); // productCardsRepository save cards information
