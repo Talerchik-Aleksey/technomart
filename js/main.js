@@ -31,11 +31,9 @@ function productСardsСreator() {
 
   const categories = ["Перфораторы", "Шуруповерты", "Ключи", "Отвертки"];
 
-  let productCardsInfo = {};
-
   for (let index = 0; index < PRODUCT_CARDS_COUNT; index++) {
     let price = getRandomIntInclusive(5000, 20000);
-    productCardsInfo = {
+    let productCardsInfo = {
       url:
         "../img/catalog/" +
         imgNames[getRandomIntInclusive(0, imgNames.length - 1)] +
