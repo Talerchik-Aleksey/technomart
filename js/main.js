@@ -9,6 +9,16 @@ function getRandomIntInclusive(min, max) {
 }
 
 function productСardsСreator() {
+  let temporaryData = [];
+
+  for (let index = 0; index < PRODUCT_CARDS_COUNT; index++) {
+    temporaryData.push(productCardsInfoCreator());
+  }
+  return temporaryData;
+}
+
+function productCardsInfoCreator() {
+  const PRICE = getRandomIntInclusive(5000, 20000);
   const imgNames = [
     "bosch-2000",
     "bosch-3000",
@@ -31,26 +41,23 @@ function productСardsСreator() {
 
   const categories = ["Перфораторы", "Шуруповерты", "Ключи", "Отвертки"];
 
-  for (let index = 0; index < PRODUCT_CARDS_COUNT; index++) {
-    let price = getRandomIntInclusive(5000, 20000);
-    let productCardsInfo = {
-      url:
-        "../img/catalog/" +
-        imgNames[getRandomIntInclusive(0, imgNames.length - 1)] +
-        ".img",
-      brend: brends[getRandomIntInclusive(0, brends.length - 1)],
-      title: titles[getRandomIntInclusive(0, titles.length - 1)],
-      price: price,
-      category: categories[getRandomIntInclusive(0, categories.length - 1)],
-      discount: Math.floor((price * (1 + 0.15)) / 500) * 500,
-      flag: flags[getRandomIntInclusive(0, flags.length - 1)],
-      isElectric: getRandomIntInclusive(0, 1) == 1,
-    };
-    console.log(productCardsInfo);
-    productCardsRepository.push(productCardsInfo);
-  }
+  let productCardsInfo = {
+    url:
+      "../img/catalog/" +
+      imgNames[getRandomIntInclusive(0, imgNames.length - 1)] +
+      ".img",
+    brend: brends[getRandomIntInclusive(0, brends.length - 1)],
+    title: titles[getRandomIntInclusive(0, titles.length - 1)],
+    price: PRICE,
+    category: categories[getRandomIntInclusive(0, categories.length - 1)],
+    discount: Math.floor((PRICE * (1 + 0.15)) / 500) * 500,
+    flag: flags[getRandomIntInclusive(0, flags.length - 1)],
+    isElectric: getRandomIntInclusive(0, 1) == 1,
+  };
+  return productCardsInfo;
 }
 
 let productCardsRepository = [];
 
-productСardsСreator(); // productCardsRepository save cards information
+productCardsRepository = productCardsRepository.concat(productСardsСreator()); // productCardsRepository save cards information
+console.log(productCardsRepository);
