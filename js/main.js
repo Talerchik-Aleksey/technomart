@@ -9,7 +9,7 @@ function getRandomIntInclusive(min, max) {
 }
 
 function productСardsСreator() {
-  let temporaryData = [];
+  let temporaryData = []; // productCardsRepository
 
   for (let index = 0; index < PRODUCT_CARDS_COUNT; index++) {
     temporaryData.push(productCardsInfoCreator());
@@ -59,5 +59,5 @@ function productCardsInfoCreator() {
 
 let productCardsRepository = [];
 
-productCardsRepository = productCardsRepository.concat(productСardsСreator()); // productCardsRepository save cards information
+productCardsRepository.concat(productСardsСreator()); // productCardsRepository save cards information
 console.log(productCardsRepository);
